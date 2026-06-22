@@ -1,0 +1,404 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8" />
+<meta name="viewport" content="width=device-width, initial-scale=1.0" />
+<title>Ruby Roxie — Cookies with Moxie | Join the list</title>
+<meta name="description" content="Ruby Roxie — handcrafted cookies with Moxie. Drop 01, our signature cookie, is coming soon in Leeds. Join the list for first access." />
+<meta property="og:title" content="Ruby Roxie — Cookies with Moxie" />
+<meta property="og:description" content="Drop 01 is coming. Our signature cookie, in small batches. Join the list for first access." />
+<meta property="og:type" content="website" />
+
+<link rel="preconnect" href="https://fonts.googleapis.com" />
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+<link href="https://fonts.googleapis.com/css2?family=Anton&family=Inter:wght@400;500;600;700;800&display=swap" rel="stylesheet" />
+
+<style>
+  /* ============================================================
+     EDIT ME — two things to change before you go live:
+     1. FORMSPREE: in the <form> below, replace YOUR_FORM_ID
+        in action="https://formspree.io/f/YOUR_FORM_ID"
+     2. INSTAGRAM: replace @rubyroxie + the href in the footer
+     ============================================================ */
+
+  :root {
+    --navy:        #0B1A40;   /* old navy base */
+    --navy-deep:   #060F2A;   /* deeper navy for depth */
+    --pink:        #FF2E86;   /* hot pink punch */
+    --pink-soft:   #FF6FAC;   /* softer pink */
+    --white:       #FFFFFF;
+    --cream:       #FFF4EC;   /* warm off-white text */
+    --muted:       #A9B3D6;   /* muted slate-blue for fine print */
+    --maxw: 640px;
+  }
+
+  * { margin: 0; padding: 0; box-sizing: border-box; }
+
+  html { scroll-behavior: smooth; }
+
+  body {
+    font-family: 'Inter', system-ui, sans-serif;
+    background: var(--navy);
+    color: var(--cream);
+    -webkit-font-smoothing: antialiased;
+    min-height: 100vh;
+    display: flex;
+    flex-direction: column;
+    overflow-x: hidden;
+  }
+
+  /* soft radial glow behind everything */
+  body::before {
+    content: "";
+    position: fixed;
+    inset: 0;
+    background:
+      radial-gradient(900px 600px at 50% -10%, rgba(255,46,134,0.20), transparent 60%),
+      radial-gradient(700px 500px at 90% 110%, rgba(255,111,172,0.12), transparent 55%),
+      linear-gradient(180deg, var(--navy) 0%, var(--navy-deep) 100%);
+    z-index: -2;
+  }
+
+  /* ---------- top ticker / marquee ---------- */
+  .ticker {
+    border-bottom: 1px solid rgba(255,255,255,0.10);
+    background: rgba(255,46,134,0.06);
+    overflow: hidden;
+    white-space: nowrap;
+  }
+  .ticker__track {
+    display: inline-block;
+    padding: 0.7rem 0;
+    animation: scroll 26s linear infinite;
+    font-family: 'Anton', sans-serif;
+    letter-spacing: 0.14em;
+    font-size: 0.78rem;
+    color: var(--pink-soft);
+    text-transform: uppercase;
+  }
+  .ticker__track span { margin: 0 1.6rem; }
+  .ticker__track span.dot { color: var(--pink); }
+  @keyframes scroll {
+    from { transform: translateX(0); }
+    to   { transform: translateX(-50%); }
+  }
+
+  /* ---------- layout ---------- */
+  main {
+    flex: 1;
+    width: 100%;
+    max-width: var(--maxw);
+    margin: 0 auto;
+    padding: clamp(2.5rem, 7vw, 4.5rem) 1.5rem 2rem;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    text-align: center;
+  }
+
+  .wordmark {
+    font-family: 'Inter', sans-serif;   /* matches your logo */
+    font-weight: 800;
+    font-size: clamp(1.4rem, 4.6vw, 1.9rem);
+    letter-spacing: 0.04em;
+    text-transform: uppercase;
+    color: var(--white);
+  }
+  .wordmark span { color: var(--pink); }
+
+  .kicker {
+    margin-top: 2.4rem;
+    font-size: 0.74rem;
+    font-weight: 700;
+    letter-spacing: 0.26em;
+    text-transform: uppercase;
+    color: var(--pink-soft);
+  }
+
+  h1 {
+    font-family: 'Anton', sans-serif;
+    font-weight: 400;
+    font-size: clamp(3.4rem, 13vw, 6rem);
+    line-height: 0.92;
+    letter-spacing: 0.005em;
+    text-transform: uppercase;
+    margin-top: 1.1rem;
+    color: var(--white);
+  }
+  h1 .moxie {
+    color: var(--pink);
+    display: inline-block;
+    text-shadow: 0 0 38px rgba(255,46,134,0.45);
+  }
+
+  .sub {
+    margin-top: 1.5rem;
+    max-width: 30rem;
+    font-size: 1.05rem;
+    line-height: 1.55;
+    color: var(--cream);
+  }
+  .sub b { color: var(--white); font-weight: 700; }
+
+  /* ---------- form ---------- */
+  .signup {
+    margin-top: 2.4rem;
+    width: 100%;
+    max-width: 28rem;
+  }
+  .field {
+    display: flex;
+    gap: 0.6rem;
+    width: 100%;
+  }
+  .field input[type="email"] {
+    flex: 1;
+    min-width: 0;
+    padding: 1rem 1.1rem;
+    font-size: 1rem;
+    font-family: inherit;
+    color: var(--white);
+    background: rgba(255,255,255,0.06);
+    border: 1.5px solid rgba(255,255,255,0.18);
+    border-radius: 12px;
+    outline: none;
+    transition: border-color 0.18s, background 0.18s;
+  }
+  .field input::placeholder { color: var(--muted); }
+  .field input:focus {
+    border-color: var(--pink);
+    background: rgba(255,46,134,0.08);
+  }
+
+  button.join {
+    padding: 1rem 1.5rem;
+    font-family: 'Anton', sans-serif;
+    letter-spacing: 0.08em;
+    font-size: 0.95rem;
+    text-transform: uppercase;
+    color: var(--white);
+    background: var(--pink);
+    border: none;
+    border-radius: 12px;
+    cursor: pointer;
+    white-space: nowrap;
+    transition: transform 0.15s, box-shadow 0.15s, background 0.15s;
+    box-shadow: 0 8px 24px rgba(255,46,134,0.35);
+  }
+  button.join:hover { transform: translateY(-2px); background: #ff1f7c; box-shadow: 0 12px 30px rgba(255,46,134,0.5); }
+  button.join:active { transform: translateY(0); }
+  button.join:disabled { opacity: 0.6; cursor: default; transform: none; }
+  button.join:focus-visible,
+  .field input:focus-visible,
+  footer a:focus-visible { outline: 2px solid var(--pink-soft); outline-offset: 3px; }
+
+  .consent {
+    margin-top: 0.9rem;
+    font-size: 0.78rem;
+    color: var(--muted);
+    line-height: 1.5;
+  }
+  .error {
+    margin-top: 0.8rem;
+    font-size: 0.85rem;
+    color: #FFB4B4;
+    min-height: 1rem;
+  }
+
+  /* success state */
+  .success {
+    margin-top: 2.4rem;
+    width: 100%;
+    max-width: 28rem;
+    padding: 1.8rem 1.4rem;
+    border: 1.5px solid rgba(255,46,134,0.4);
+    background: rgba(255,46,134,0.08);
+    border-radius: 16px;
+    display: none;
+  }
+  .success.show { display: block; animation: pop 0.4s ease both; }
+  @keyframes pop { from { opacity: 0; transform: scale(0.96); } to { opacity: 1; transform: scale(1); } }
+  .success h2 {
+    font-family: 'Anton', sans-serif;
+    font-size: 1.6rem;
+    text-transform: uppercase;
+    letter-spacing: 0.04em;
+    color: var(--white);
+  }
+  .success p { margin-top: 0.7rem; color: var(--cream); line-height: 1.5; font-size: 0.98rem; }
+
+  /* ---------- perks row ---------- */
+  .perks {
+    margin-top: 2.6rem;
+    display: flex;
+    flex-wrap: wrap;
+    justify-content: center;
+    gap: 0.7rem 1.4rem;
+    font-size: 0.82rem;
+    letter-spacing: 0.04em;
+    color: var(--cream);
+  }
+  .perks span { display: inline-flex; align-items: center; gap: 0.45rem; }
+  .perks span::before {
+    content: "";
+    width: 7px; height: 7px;
+    border-radius: 50%;
+    background: var(--pink);
+  }
+
+  /* ---------- footer ---------- */
+  footer {
+    text-align: center;
+    padding: 2rem 1.5rem 2.4rem;
+    font-size: 0.8rem;
+    color: var(--muted);
+    border-top: 1px solid rgba(255,255,255,0.08);
+    margin-top: 1.5rem;
+  }
+  footer a { color: var(--pink-soft); text-decoration: none; font-weight: 600; }
+  footer a:hover { color: var(--pink); }
+  footer .legal { margin-top: 0.5rem; }
+
+  @media (max-width: 460px) {
+    .field { flex-direction: column; }
+    button.join { width: 100%; }
+  }
+
+  @media (prefers-reduced-motion: reduce) {
+    .ticker__track { animation: none; }
+    * { scroll-behavior: auto; }
+    .success.show { animation: none; }
+  }
+</style>
+</head>
+<body>
+
+  <!-- ticker -->
+  <div class="ticker" aria-hidden="true">
+    <div class="ticker__track">
+      <span>Drop 01</span><span class="dot">✦</span>
+      <span>Cookies with Moxie</span><span class="dot">✦</span>
+      <span>One cookie · Small batches</span><span class="dot">✦</span>
+      <span>Made in Leeds</span><span class="dot">✦</span>
+      <span>Dropping Soon</span><span class="dot">✦</span>
+      <span>Join the List</span><span class="dot">✦</span>
+      <!-- duplicate for seamless loop -->
+      <span>Drop 01</span><span class="dot">✦</span>
+      <span>Cookies with Moxie</span><span class="dot">✦</span>
+      <span>One cookie · Small batches</span><span class="dot">✦</span>
+      <span>Made in Leeds</span><span class="dot">✦</span>
+      <span>Dropping Soon</span><span class="dot">✦</span>
+      <span>Join the List</span><span class="dot">✦</span>
+    </div>
+  </div>
+
+  <main>
+    <div class="wordmark">RUBY <span>ROXIE</span></div>
+
+    <p class="kicker">Handcrafted in Leeds · Drop 01 dropping soon</p>
+
+    <h1>Cookies with<br /><span class="moxie">Moxie</span></h1>
+
+    <p class="sub">
+      It starts with one. Our signature cookie drops first — small batches, and we're not
+      telling you what's inside. <b>Not yet.</b> Join the list and you'll be first through the
+      door when <b>Drop 01</b> lands.
+    </p>
+
+    <!-- ====== SIGNUP FORM ====== -->
+    <form class="signup" id="signupForm"
+          action="https://formspree.io/f/YOUR_FORM_ID"
+          method="POST">
+      <div class="field">
+        <input type="email" name="email" id="email"
+               placeholder="your@email.com" required
+               autocomplete="email" aria-label="Email address" />
+        <button type="submit" class="join" id="joinBtn">Join the list</button>
+      </div>
+      <p class="consent">
+        We'll only email you about Ruby Roxie drops. No spam, unsubscribe anytime.
+      </p>
+      <p class="error" id="errorMsg" role="alert"></p>
+    </form>
+
+    <!-- ====== SUCCESS STATE ====== -->
+    <div class="success" id="successBox" aria-live="polite">
+      <h2>You're on the list 🍪</h2>
+      <p>First access is yours. Keep an eye on your inbox — Drop 01 is coming in small batches, and the list gets it before anyone else.</p>
+    </div>
+
+    <div class="perks">
+      <span>First access to Drop 01</span>
+      <span>A list-only launch treat</span>
+      <span>No spam, just cookies</span>
+    </div>
+  </main>
+
+  <footer>
+    <div>RUBY ROXIE · Leeds, UK · <a href="https://instagram.com/rubyroxie" target="_blank" rel="noopener">@rubyroxie</a></div>
+    <div class="legal">© 2026 Ruby Roxie. Cookies with Moxie.</div>
+  </footer>
+
+<script>
+  (function () {
+    var form = document.getElementById('signupForm');
+    var btn = document.getElementById('joinBtn');
+    var errorMsg = document.getElementById('errorMsg');
+    var successBox = document.getElementById('successBox');
+    var emailInput = document.getElementById('email');
+
+    var isDemo = form.getAttribute('action').indexOf('YOUR_FORM_ID') !== -1;
+
+    function showSuccess() {
+      form.style.display = 'none';
+      successBox.classList.add('show');
+      successBox.scrollIntoView({ block: 'center' });
+    }
+
+    form.addEventListener('submit', function (e) {
+      e.preventDefault();
+      errorMsg.textContent = '';
+
+      var email = emailInput.value.trim();
+      if (!email || email.indexOf('@') === -1) {
+        errorMsg.textContent = 'Please enter a valid email.';
+        return;
+      }
+
+      // Demo mode: no Formspree ID added yet — show the flow without sending.
+      if (isDemo) {
+        showSuccess();
+        return;
+      }
+
+      btn.disabled = true;
+      btn.textContent = 'Joining…';
+
+      fetch(form.action, {
+        method: 'POST',
+        body: new FormData(form),
+        headers: { 'Accept': 'application/json' }
+      })
+      .then(function (res) {
+        if (res.ok) {
+          showSuccess();
+        } else {
+          return res.json().then(function (data) {
+            errorMsg.textContent = (data && data.errors && data.errors[0] && data.errors[0].message)
+              ? data.errors[0].message
+              : 'Something went wrong. Please try again.';
+            btn.disabled = false;
+            btn.textContent = 'Join the list';
+          });
+        }
+      })
+      .catch(function () {
+        errorMsg.textContent = 'Network error. Please try again.';
+        btn.disabled = false;
+        btn.textContent = 'Join the list';
+      });
+    });
+  })();
+</script>
+</body>
+</html>
